@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import Weather from "./components/weather";
 
-function App() {
+export default function App() {
+  require("dotenv").config();
+  const [long, setLong] = useState([]);
+  const [data, setData] = useState([]);
+  const [lat, setLat] = useState([]);
+
+  const url = `${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${long}&units=metric&appid=${process.env.REACT_APP_API_KEY}`;
+  const fetchData = async () => {
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+      setData(result);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition( (position) => {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    });
+    fetchData();
+  }, [lat, long]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      {(typeof data.main != 'undefined')?<Weather weatherData={data}/>:<div>Please turn on your location...</div>}
     </div>
   );
 }
-
-export default App;
