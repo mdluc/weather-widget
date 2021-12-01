@@ -15,4 +15,5 @@ REACT_APP_API_IMG=https://openweathermap.org/img/w/
 
 
 *current date, humidity, sunrise time, sunset time
+
 **you can find this key [here](https://home.openweathermap.org/api_keys) after you created your own free account
