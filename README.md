@@ -1,4 +1,4 @@
-###Weather widget
+### Weather widget
 
 This application displays the weather, and other additional information*, for the user's current location. 
 
