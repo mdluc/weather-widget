@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Weather from "./components/weather";
 
 export default function App() {
-  require("dotenv").config();
   const [long, setLong] = useState([]);
   const [data, setData] = useState([]);
   const [lat, setLat] = useState([]);
