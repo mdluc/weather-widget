@@ -13,6 +13,9 @@ REACT_APP_API_KEY=ADD_YOUR_OWN_API_KEY_HERE**
 REACT_APP_API_IMG=https://openweathermap.org/img/w/
 ```
 
+### Demo
+[Weather Widget](https://mdluc.github.io/weather-widget/)
+
 
 *current date, humidity, sunrise time, sunset time
 
